@@ -1,6 +1,8 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import TechIcon from './TechIcon';
 
 interface ProjectCardProps {
   title: string;
@@ -8,19 +10,31 @@ interface ProjectCardProps {
   techStack: string[];
   githubUrl: string;
   liveUrl?: string;
-  delay?: number;
+  index?: number;
 }
 
-const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, delay = 0 }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, index = 0 }: ProjectCardProps) => {
   return (
-    <div
-      className="card-gradient rounded-xl border border-border p-6 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-primary/10 opacity-0 animate-slide-up group"
-      style={{ animationDelay: `${delay}s` }}
+    <motion.div
+      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.15,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
+      className="card-gradient rounded-xl border border-border p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 group"
     >
       {/* Project Icon */}
-      <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
+      <motion.div 
+        className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors"
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="w-6 h-6 rounded bg-primary" />
-      </div>
+      </motion.div>
 
       {/* Title */}
       <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
@@ -32,16 +46,24 @@ const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, delay 
         {description}
       </p>
 
-      {/* Tech Stack */}
+      {/* Tech Stack with Icons */}
       <div className="flex flex-wrap gap-2 mb-6">
-        {techStack.map((tech) => (
-          <Badge
+        {techStack.map((tech, i) => (
+          <motion.div
             key={tech}
-            variant="secondary"
-            className="bg-secondary hover:bg-primary/20 transition-colors text-xs"
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 + i * 0.1, duration: 0.3 }}
           >
-            {tech}
-          </Badge>
+            <Badge
+              variant="secondary"
+              className="bg-secondary hover:bg-primary/20 transition-colors text-xs flex items-center gap-1.5 py-1"
+            >
+              <TechIcon name={tech} size={14} />
+              {tech}
+            </Badge>
+          </motion.div>
         ))}
       </div>
 
@@ -62,7 +84,7 @@ const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, delay 
           </Button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
