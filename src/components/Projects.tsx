@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 
 const projects = [
@@ -35,17 +36,35 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-background">
+    <section id="projects" className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             Labs & <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             Projects completed during this semester, showcasing skills in React, JavaScript, testing, and version control.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -53,7 +72,7 @@ const Projects = () => {
             <ProjectCard
               key={project.title}
               {...project}
-              delay={index * 0.1}
+              index={index}
             />
           ))}
         </div>
