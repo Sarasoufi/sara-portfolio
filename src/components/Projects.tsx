@@ -36,8 +36,8 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-16 md:py-24 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div 
           className="text-center mb-16"
@@ -47,7 +47,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -67,7 +67,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.title}

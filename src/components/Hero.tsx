@@ -29,17 +29,17 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 pt-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 pt-20 md:pt-16 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           {/* Profile Image */}
           <motion.div 
-            className="mb-8"
+            className="mb-6 md:mb-8"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           >
             <motion.div 
-              className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-primary to-primary-glow p-1 glow overflow-hidden"
+              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-primary to-primary-glow p-1 glow overflow-hidden"
               animate={{ boxShadow: ["0 0 20px hsl(292 92% 24% / 0.3)", "0 0 40px hsl(292 92% 24% / 0.6)", "0 0 20px hsl(292 92% 24% / 0.3)"] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
@@ -53,7 +53,7 @@ const Hero = () => {
 
           {/* Name & Title */}
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -63,7 +63,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.h2 
-            className="text-xl md:text-2xl text-primary mb-6"
+            className="text-lg sm:text-xl md:text-2xl text-primary mb-4 md:mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -73,7 +73,7 @@ const Hero = () => {
 
           {/* Bio */}
           <motion.p 
-            className="text-muted-foreground text-lg md:text-xl mb-8 max-w-2xl mx-auto"
+            className="text-muted-foreground text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -84,18 +84,18 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-wrap gap-4 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 md:mb-12 px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="hero" size="lg" asChild>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+              <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
                 <a href="#projects">View My Work</a>
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="outline" size="lg" asChild>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
                 <a href="#contact">Contact Me</a>
               </Button>
             </motion.div>

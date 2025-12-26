@@ -74,7 +74,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <motion.div 
         className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
@@ -87,7 +87,7 @@ const Contact = () => {
         transition={{ duration: 5, repeat: Infinity, delay: 2.5 }}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <motion.div 
           className="text-center mb-16"
@@ -97,7 +97,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -116,7 +116,7 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

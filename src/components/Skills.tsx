@@ -70,8 +70,8 @@ const skillVariants = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-card/50 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-16 md:py-24 bg-card/50 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div 
           className="text-center mb-16"
@@ -81,7 +81,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -102,7 +102,7 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
