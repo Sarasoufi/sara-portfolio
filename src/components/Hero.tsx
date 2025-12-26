@@ -1,12 +1,13 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
+import heroImage from '@/assets/hero.jpg';
 
 const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center hero-gradient relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -38,13 +39,15 @@ const Hero = () => {
             transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           >
             <motion.div 
-              className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-primary to-primary-glow p-1 glow"
+              className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-primary to-primary-glow p-1 glow overflow-hidden"
               animate={{ boxShadow: ["0 0 20px hsl(292 92% 24% / 0.3)", "0 0 40px hsl(292 92% 24% / 0.6)", "0 0 20px hsl(292 92% 24% / 0.3)"] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="w-full h-full rounded-full bg-card flex items-center justify-center text-5xl font-bold text-gradient">
-                SS
-              </div>
+              <img 
+                src={heroImage} 
+                alt="Sara Soufi" 
+                className="w-full h-full rounded-full object-cover"
+              />
             </motion.div>
           </motion.div>
 
