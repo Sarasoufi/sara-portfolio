@@ -1,4 +1,3 @@
-import { LucideIcon } from 'lucide-react';
 import { 
   FileCode, 
   Palette, 
@@ -17,13 +16,7 @@ import {
   FolderOpen
 } from 'lucide-react';
 
-interface TechIconProps {
-  name: string;
-  size?: number;
-  className?: string;
-}
-
-const iconMap: Record<string, LucideIcon> = {
+const iconMap = {
   'HTML': FileCode,
   'CSS': Palette,
   'JavaScript': Braces,
@@ -45,7 +38,7 @@ const iconMap: Record<string, LucideIcon> = {
   'File System (fs)': FolderOpen,
 };
 
-const TechIcon = ({ name, size = 16, className = '' }: TechIconProps) => {
+const TechIcon = ({ name, size = 16, className = '' }) => {
   const Icon = iconMap[name] || Code2;
   return <Icon size={size} className={`text-primary ${className}`} />;
 };

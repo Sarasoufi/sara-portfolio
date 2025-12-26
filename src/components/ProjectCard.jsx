@@ -4,16 +4,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import TechIcon from './TechIcon';
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  techStack: string[];
-  githubUrl: string;
-  liveUrl?: string;
-  index?: number;
-}
-
-const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, index = 0 }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, index = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 60, scale: 0.9 }}
