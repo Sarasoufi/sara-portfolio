@@ -25,7 +25,7 @@ const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, index 
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
-      className="card-gradient rounded-xl border border-border p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 group"
+      className="card-gradient rounded-xl border border-border p-4 sm:p-6 hover:border-primary/50 transition-all duration-500 hover:shadow-lg hover:shadow-primary/10 group"
     >
       {/* Project Icon */}
       <motion.div 
@@ -37,17 +37,17 @@ const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, index 
       </motion.div>
 
       {/* Title */}
-      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+      <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+      <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed line-clamp-3">
         {description}
       </p>
 
       {/* Tech Stack with Icons */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
         {techStack.map((tech, i) => (
           <motion.div
             key={tech}
