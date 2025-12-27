@@ -15,6 +15,7 @@ import {
   Package,
   FolderOpen
 } from 'lucide-react';
+import styles from './TechIcon.module.css';
 
 const iconMap = {
   'HTML': FileCode,
@@ -40,7 +41,7 @@ const iconMap = {
 
 const TechIcon = ({ name, size = 16, className = '' }) => {
   const Icon = iconMap[name] || Code2;
-  return <Icon size={size} className={`text-primary ${className}`} />;
+  return <Icon size={size} className={`${styles.icon} ${className}`} />;
 };
 
 export default TechIcon;

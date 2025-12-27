@@ -1,0 +1,35 @@
+/* NotFound.module.css */
+.container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: hsl(240 4.8% 95.9%);
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: hsl(240 10% 3.9%);
+}
+
+.subtitle {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: hsl(240 5% 64.9%);
+}
+
+.link {
+  color: hsl(292 92% 24%);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: hsl(292 84% 40%);
+}

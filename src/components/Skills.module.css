@@ -1,0 +1,146 @@
+/* Skills.module.css */
+.section {
+  padding: 4rem 0;
+  background: hsl(240 10% 3.9% / 0.5);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: hsl(0 0% 98%);
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.gradient {
+  background: linear-gradient(to right, hsl(292 92% 24%), hsl(292 84% 40%), hsl(292 84% 60%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: hsl(240 5% 64.9%);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+.categoryTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: hsl(292 92% 24%);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid hsl(240 3.7% 15.9%);
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: hsl(240 3.7% 15.9% / 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skillItem:hover {
+  background: hsl(240 3.7% 15.9%);
+  transform: translateX(10px);
+}
+
+.skillContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skillIconWrapper {
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+  background: hsl(292 92% 24% / 0.2);
+  transition: background 0.3s ease;
+}
+
+.skillItem:hover .skillIconWrapper {
+  background: hsl(292 92% 24% / 0.3);
+}
+
+.skillName {
+  font-weight: 500;
+  color: hsl(0 0% 98%);
+  transition: color 0.3s ease;
+}
+
+.skillItem:hover .skillName {
+  color: hsl(292 92% 24%);
+}
+
+.skillType {
+  font-size: 0.75rem;
+  color: hsl(240 5% 64.9%);
+  background: hsl(240 10% 3.9%);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}

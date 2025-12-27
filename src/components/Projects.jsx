@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import styles from './Projects.module.css';
 
 const projects = [
   {
@@ -36,27 +37,27 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="projects" className={styles.section}>
+      <div className={styles.container}>
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-16"
+          className={styles.header}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
+            className={styles.title}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Labs & <span className="text-gradient">Projects</span>
+            Labs & <span className={styles.gradient}>Projects</span>
           </motion.h2>
           <motion.p 
-            className="text-muted-foreground max-w-2xl mx-auto"
+            className={styles.subtitle}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -67,7 +68,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className={styles.grid}>
           {projects.map((project, index) => (
             <ProjectCard
               key={project.title}

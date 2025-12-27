@@ -1,18 +1,15 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
 import heroImage from '@/assets/hero.jpg';
+import styles from './Hero.module.css';
 
 const Hero = () => {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden"
-    >
+    <section id="home" className={styles.section}>
       {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className={styles.backgroundContainer}>
         <motion.div 
-          className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
+          className={styles.bgOrb1}
           animate={{ 
             y: [0, -20, 0],
             scale: [1, 1.1, 1],
@@ -20,7 +17,7 @@ const Hero = () => {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+          className={styles.bgOrb2}
           animate={{ 
             y: [0, 20, 0],
             scale: [1, 1.15, 1],
@@ -29,41 +26,41 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 pt-20 md:pt-16 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className={styles.container}>
+        <div className={styles.content}>
           {/* Profile Image */}
           <motion.div 
-            className="mb-6 md:mb-8"
+            className={styles.imageWrapper}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           >
             <motion.div 
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-primary to-primary-glow p-1 glow overflow-hidden"
+              className={styles.imageContainer}
               animate={{ boxShadow: ["0 0 20px hsl(292 92% 24% / 0.3)", "0 0 40px hsl(292 92% 24% / 0.6)", "0 0 20px hsl(292 92% 24% / 0.3)"] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               <img 
                 src={heroImage} 
                 alt="Sara Soufi" 
-                className="w-full h-full rounded-full object-cover"
+                className={styles.profileImage}
               />
             </motion.div>
           </motion.div>
 
           {/* Name & Title */}
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4"
+            className={styles.title}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Hello, I'm{' '}
-            <span className="text-gradient">Soufi Sara</span>
+            <span className={styles.gradient}>Soufi Sara</span>
           </motion.h1>
 
           <motion.h2 
-            className="text-lg sm:text-xl md:text-2xl text-primary mb-4 md:mb-6"
+            className={styles.subtitle}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -73,7 +70,7 @@ const Hero = () => {
 
           {/* Bio */}
           <motion.p 
-            className="text-muted-foreground text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-2"
+            className={styles.bio}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -84,26 +81,45 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 md:mb-12 px-4 sm:px-0"
+            className={styles.buttonsContainer}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-              <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
-                <a href="#projects">View My Work</a>
-              </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={styles.buttonWrapper}>
+              <a href="#projects" className={`${styles.button} ${styles.buttonPrimary}`} style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0.75rem 2rem',
+                borderRadius: '0.5rem',
+                background: 'linear-gradient(to right, hsl(292 92% 24%), hsl(292 84% 40%))',
+                color: 'hsl(0 0% 98%)',
+                fontWeight: 500,
+                textDecoration: 'none',
+                width: '100%'
+              }}>View My Work</a>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
-                <a href="#contact">Contact Me</a>
-              </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={styles.buttonWrapper}>
+              <a href="#contact" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0.75rem 2rem',
+                borderRadius: '0.5rem',
+                border: '1px solid hsl(240 3.7% 15.9%)',
+                background: 'transparent',
+                color: 'hsl(0 0% 98%)',
+                fontWeight: 500,
+                textDecoration: 'none',
+                width: '100%'
+              }}>Contact Me</a>
             </motion.div>
           </motion.div>
 
           {/* Social Links */}
           <motion.div 
-            className="flex justify-center gap-4"
+            className={styles.socialLinks}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -118,26 +134,26 @@ const Hero = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className={styles.socialLink}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 + index * 0.1 }}
               >
-                <social.icon className="w-5 h-5" />
+                <social.icon className={styles.socialIcon} />
               </motion.a>
             ))}
           </motion.div>
 
           {/* Scroll indicator */}
           <motion.div 
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className={styles.scrollIndicator}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">
-              <ArrowDown className="w-6 h-6" />
+            <a href="#projects" className={styles.scrollLink}>
+              <ArrowDown className={styles.scrollIcon} />
             </a>
           </motion.div>
         </div>

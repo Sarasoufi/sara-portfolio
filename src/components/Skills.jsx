@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import TechIcon from './TechIcon';
+import styles from './Skills.module.css';
 
 const skillCategories = [
   {
@@ -70,27 +71,27 @@ const skillVariants = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 md:py-24 bg-card/50 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="skills" className={styles.section}>
+      <div className={styles.container}>
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-16"
+          className={styles.header}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
+            className={styles.title}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Skills & <span className="text-gradient">Technologies</span>
+            Skills & <span className={styles.gradient}>Technologies</span>
           </motion.h2>
           <motion.p 
-            className="text-muted-foreground max-w-2xl mx-auto"
+            className={styles.subtitle}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -102,7 +103,7 @@ const Skills = () => {
 
         {/* Skills Grid */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className={styles.grid}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -113,10 +114,8 @@ const Skills = () => {
               key={category.title}
               variants={categoryVariants}
             >
-              <h3 className="text-lg font-bold text-primary mb-4 pb-2 border-b border-border">
-                {category.title}
-              </h3>
-              <div className="space-y-3">
+              <h3 className={styles.categoryTitle}>{category.title}</h3>
+              <div className={styles.skillsList}>
                 {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
@@ -126,23 +125,19 @@ const Skills = () => {
                       x: 10,
                       transition: { duration: 0.2 } 
                     }}
-                    className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group cursor-pointer"
+                    className={styles.skillItem}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className={styles.skillContent}>
                       <motion.div
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
-                        className="p-1.5 rounded-md bg-primary/20 group-hover:bg-primary/30 transition-colors"
+                        className={styles.skillIconWrapper}
                       >
                         <TechIcon name={skill.name} size={18} />
                       </motion.div>
-                      <span className="font-medium group-hover:text-primary transition-colors">
-                        {skill.name}
-                      </span>
+                      <span className={styles.skillName}>{skill.name}</span>
                     </div>
-                    <span className="text-xs text-muted-foreground bg-background px-2 py-1 rounded">
-                      {skill.type}
-                    </span>
+                    <span className={styles.skillType}>{skill.type}</span>
                   </motion.div>
                 ))}
               </div>

@@ -1,0 +1,155 @@
+/* ProjectCard.module.css */
+.card {
+  background: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(240 3.7% 15.9% / 0.5) 100%);
+  border-radius: 0.75rem;
+  border: 1px solid hsl(240 3.7% 15.9%);
+  padding: 1rem;
+  transition: all 0.5s ease;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.card:hover {
+  border-color: hsl(292 92% 24% / 0.5);
+  box-shadow: 0 10px 40px hsl(292 92% 24% / 0.1);
+  transform: translateY(-8px);
+}
+
+.iconWrapper {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  background: hsl(292 92% 24% / 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  background: hsl(292 92% 24% / 0.3);
+}
+
+.iconInner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  background: hsl(292 92% 24%);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: hsl(0 0% 98%);
+  transition: color 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.card:hover .title {
+  color: hsl(292 92% 24%);
+}
+
+.description {
+  color: hsl(240 5% 64.9%);
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .description {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .techStack {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  background: hsl(240 3.7% 15.9%);
+  color: hsl(0 0% 98%);
+  font-size: 0.75rem;
+  transition: background 0.3s ease;
+}
+
+.badge:hover {
+  background: hsl(292 92% 24% / 0.2);
+}
+
+.links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.buttonOutline {
+  background: transparent;
+  border: 1px solid hsl(240 3.7% 15.9%);
+  color: hsl(0 0% 98%);
+}
+
+.buttonOutline:hover {
+  background: hsl(240 3.7% 15.9%);
+  border-color: hsl(292 92% 24% / 0.5);
+}
+
+.buttonGlow {
+  background: linear-gradient(to right, hsl(292 92% 24%), hsl(292 84% 40%));
+  border: none;
+  color: hsl(0 0% 98%);
+}
+
+.buttonGlow:hover {
+  box-shadow: 0 0 20px hsl(292 92% 24% / 0.4);
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}

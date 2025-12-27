@@ -4,10 +4,11 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import styles from './Index.module.css';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className={styles.page}>
       <Navbar />
       <main>
         <Hero />

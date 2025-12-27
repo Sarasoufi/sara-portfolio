@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
+import styles from './Navbar.module.css';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -22,51 +22,52 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/95 backdrop-blur-md border-b border-border' : 'bg-black/80 backdrop-blur-sm'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <a href="#home" className="text-xl font-bold text-gradient">
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : styles.navDefault}`}>
+      <div className={styles.container}>
+        <div className={styles.navContent}>
+          <a href="#home" className={styles.logo}>
             Sara Soufi
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className={styles.desktopNav}>
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
+                className={styles.navLink}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                <span className={styles.navLinkUnderline} />
               </a>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
+          <button
+            className={styles.mobileMenuButton}
             onClick={() => setIsOpen(!isOpen)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'hsl(0 0% 98%)',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
           >
             {isOpen ? <X /> : <Menu />}
-          </Button>
+          </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 animate-fade-in">
+          <div className={styles.mobileNav}>
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-3 text-muted-foreground hover:text-foreground transition-colors"
+                className={styles.mobileNavLink}
               >
                 {link.name}
               </a>

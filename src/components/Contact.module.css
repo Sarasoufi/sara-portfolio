@@ -1,0 +1,262 @@
+/* Contact.module.css */
+.section {
+  padding: 4rem 0;
+  background: hsl(240 10% 3.9%);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+}
+
+.bgOrb1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  background: hsl(292 92% 24% / 0.05);
+  border-radius: 50%;
+  filter: blur(48px);
+}
+
+.bgOrb2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24rem;
+  height: 24rem;
+  background: hsl(292 92% 24% / 0.05);
+  border-radius: 50%;
+  filter: blur(48px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: hsl(0 0% 98%);
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.gradient {
+  background: linear-gradient(to right, hsl(292 92% 24%), hsl(292 84% 40%), hsl(292 84% 60%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: hsl(240 5% 64.9%);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+.contactInfoTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: hsl(0 0% 98%);
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: hsl(240 10% 3.9%);
+  border: 1px solid hsl(240 3.7% 15.9%);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contactItem:hover {
+  border-color: hsl(292 92% 24% / 0.5);
+  transform: translateX(10px);
+}
+
+.contactIconWrapper {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: hsl(292 92% 24% / 0.2);
+  transition: background 0.3s ease;
+}
+
+.contactItem:hover .contactIconWrapper {
+  background: hsl(292 92% 24% / 0.3);
+}
+
+.contactIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: hsl(292 92% 24%);
+}
+
+.contactLabel {
+  font-size: 0.875rem;
+  color: hsl(240 5% 64.9%);
+}
+
+.contactValue {
+  font-weight: 500;
+  color: hsl(0 0% 98%);
+  transition: color 0.3s ease;
+}
+
+.contactItem:hover .contactValue {
+  color: hsl(292 92% 24%);
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: hsl(0 0% 98%);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(240 3.7% 15.9%);
+  background: hsl(240 10% 3.9%);
+  color: hsl(0 0% 98%);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(292 92% 24%);
+}
+
+.input::placeholder {
+  color: hsl(240 5% 64.9%);
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(240 3.7% 15.9%);
+  background: hsl(240 10% 3.9%);
+  color: hsl(0 0% 98%);
+  font-size: 1rem;
+  resize: none;
+  transition: border-color 0.3s ease;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: hsl(292 92% 24%);
+}
+
+.textarea::placeholder {
+  color: hsl(240 5% 64.9%);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: linear-gradient(to right, hsl(292 92% 24%), hsl(292 84% 40%));
+  color: hsl(0 0% 98%);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submitButton:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px hsl(292 92% 24% / 0.4);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.buttonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
