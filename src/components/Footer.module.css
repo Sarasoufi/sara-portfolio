@@ -1,0 +1,55 @@
+/* Footer.module.css */
+.footer {
+  padding: 2rem 0;
+  background: hsl(240 10% 3.9%);
+  border-top: 1px solid hsl(240 3.7% 15.9%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+  }
+}
+
+.copyright {
+  color: hsl(240 5% 64.9%);
+  font-size: 0.875rem;
+}
+
+.name {
+  color: hsl(292 92% 24%);
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialLink {
+  color: hsl(240 5% 64.9%);
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+  color: hsl(292 92% 24%);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
