@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,7 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        preahvihear: ['Preahvihear', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -75,12 +81,16 @@ export default {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(292 92% 24% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(292 92% 24% / 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(186 100% 50% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px hsl(186 100% 50% / 0.6)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
       animation: {
@@ -90,6 +100,7 @@ export default {
         "slide-up": "slide-up 0.8s ease-out forwards",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
         float: "float 3s ease-in-out infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },
