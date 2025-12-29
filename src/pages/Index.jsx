@@ -1,22 +1,25 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import StatsSection from '@/components/StatsSection';
+import About from '@/components/About';
+import Methodology from '@/components/Methodology';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
+import Education from '@/components/Education';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import styles from './Index.module.css';
 
 const Index = () => {
   return (
-    <div className={styles.page}>
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
         <Hero />
-        <StatsSection />
+        <About />
+        <Methodology />
         <Projects />
         <Skills />
+        <Education />
         <Contact />
       </main>
       <Footer />

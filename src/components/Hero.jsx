@@ -1,75 +1,45 @@
-import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero.jpg';
-import ParticlesBackground from './ParticlesBackground';
 import TypewriterText from './TypewriterText';
-import styles from './Hero.module.css';
 
 const roles = [
   'Full-Stack Developer',
   'React Specialist',
   'UI/UX Enthusiast',
-  'Problem Solver',
 ];
 
 const Hero = () => {
   return (
-    <section id="home" className={styles.section}>
-      {/* Particles Background */}
-      <ParticlesBackground />
+    <section id="home" className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-secondary opacity-50" />
+      
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
 
-      {/* Animated background elements */}
-      <div className={styles.backgroundContainer}>
-        <motion.div 
-          className={styles.bgOrb1}
-          animate={{ 
-            y: [0, -30, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className={styles.bgOrb2}
-          animate={{ 
-            y: [0, 30, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <div className={styles.bgOrb3} />
-      </div>
-
-      <div className={styles.container}>
-        <div className={styles.content}>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Profile Image */}
           <motion.div 
-            className={styles.imageWrapper}
-            initial={{ opacity: 0, scale: 0.5 }}
+            className="mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.div 
-              className={styles.imageContainer}
-              animate={{ 
-                boxShadow: [
-                  "0 0 30px hsla(186, 100%, 50%, 0.3)", 
-                  "0 0 50px hsla(186, 100%, 50%, 0.5)", 
-                  "0 0 30px hsla(186, 100%, 50%, 0.3)"
-                ] 
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
+            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full p-[2px] bg-gradient-to-br from-primary to-primary-glow">
               <img 
                 src={heroImage} 
-                alt="Sara Soufi - Developer" 
-                className={styles.profileImage}
+                alt="Sara Soufi" 
+                className="w-full h-full rounded-full object-cover border-2 border-background"
               />
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Greeting */}
           <motion.p
-            className={styles.greeting}
+            className="text-muted-foreground text-sm md:text-base tracking-[0.3em] uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -79,32 +49,38 @@ const Hero = () => {
 
           {/* Name */}
           <motion.h1 
-            className={styles.title}
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium mb-4 text-foreground"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <span className={styles.gradient}>Sara Soufi</span>
+            Sara <span className="text-primary">Soufi</span>
           </motion.h1>
+
+          {/* Gold line */}
+          <motion.div 
+            className="gold-line mx-auto mb-6"
+            initial={{ width: 0 }}
+            animate={{ width: 60 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          />
 
           {/* Typewriter Title */}
           <motion.h2 
-            className={styles.subtitle}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl md:text-2xl text-muted-foreground font-light mb-8 h-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <span className={styles.gradient}>
-              <TypewriterText texts={roles} typingSpeed={80} deletingSpeed={40} pauseTime={2500} />
-            </span>
+            <TypewriterText texts={roles} typingSpeed={80} deletingSpeed={40} pauseTime={2500} />
           </motion.h2>
 
           {/* Bio */}
           <motion.p 
-            className={styles.bio}
-            initial={{ opacity: 0, y: 30 }}
+            className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
           >
             I design and develop modern, responsive web applications with a focus on 
             clean code, exceptional user experiences, and cutting-edge technologies.
@@ -112,50 +88,51 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <motion.div 
-            className={styles.buttonsContainer}
-            initial={{ opacity: 0, y: 30 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={styles.buttonWrapper}>
-              <a href="#projects" className={styles.buttonPrimary}>
-                View My Work
-              </a>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={styles.buttonWrapper}>
-              <a href="#contact" className={styles.buttonSecondary}>
-                <Mail style={{ width: '1rem', height: '1rem' }} />
-                Contact Me
-              </a>
-            </motion.div>
+            <motion.a 
+              href="#projects" 
+              className="px-8 py-3.5 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-primary/90 transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View My Work
+            </motion.a>
+            <motion.a 
+              href="#contact" 
+              className="px-8 py-3.5 border border-muted-foreground/30 text-foreground font-medium rounded-sm hover:border-primary hover:text-primary transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact Me
+            </motion.a>
           </motion.div>
 
           {/* Social Links */}
           <motion.div 
-            className={styles.socialLinks}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex justify-center gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
           >
             {[
               { icon: Github, href: "https://github.com/sarasoufi", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com/in/sara-soufi", label: "LinkedIn" },
               { icon: Mail, href: "mailto:sarasoufi047@gmail.com", label: "Email" },
-            ].map((social, index) => (
+            ].map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.socialLink}
-                whileHover={{ scale: 1.15, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
+                className="p-3 text-muted-foreground hover:text-primary transition-colors duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
                 aria-label={social.label}
               >
-                <social.icon className={styles.socialIcon} />
+                <social.icon className="w-5 h-5" />
               </motion.a>
             ))}
           </motion.div>
@@ -163,15 +140,15 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <motion.div 
-          className={styles.scrollIndicator}
-          animate={{ y: [0, 10, 0] }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
         >
-          <a href="#projects" className={styles.scrollLink}>
-            <span className={styles.scrollText}>Scroll</span>
-            <ArrowDown className={styles.scrollIcon} />
+          <a href="#about" className="flex flex-col items-center gap-2 text-muted-foreground/50 hover:text-primary transition-colors">
+            <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+            <ArrowDown className="w-4 h-4" />
           </a>
         </motion.div>
       </div>

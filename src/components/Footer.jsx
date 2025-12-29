@@ -1,39 +1,43 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import styles from './Footer.module.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <p className={styles.copyright}>
-            © {currentYear} <span className={styles.name}>Sara Soufi</span>. All rights reserved.
+    <footer className="py-12 bg-background border-t border-border">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Copyright */}
+          <p className="text-muted-foreground text-sm">
+            © {currentYear} <span className="text-primary">Sara Soufi</span>. All rights reserved.
           </p>
 
-          <div className={styles.socialLinks}>
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
             <a
               href="https://github.com/sarasoufi"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.socialLink}
+              className="p-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+              aria-label="GitHub"
             >
-              <Github className={styles.icon} />
+              <Github className="w-4 h-4" />
             </a>
             <a
               href="https://linkedin.com/in/sara-soufi"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.socialLink}
+              className="p-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+              aria-label="LinkedIn"
             >
-              <Linkedin className={styles.icon} />
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href="mailto:sarasoufi047@gmail.com"
-              className={styles.socialLink}
+              className="p-2 text-muted-foreground hover:text-primary transition-colors duration-300"
+              aria-label="Email"
             >
-              <Mail className={styles.icon} />
+              <Mail className="w-4 h-4" />
             </a>
           </div>
         </div>

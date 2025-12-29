@@ -1,149 +1,90 @@
 import { motion } from 'framer-motion';
-import TechIcon from './TechIcon';
-import styles from './Skills.module.css';
 
 const skillCategories = [
   {
-    title: 'Front-end Web',
-    skills: [
-      { name: 'HTML', type: 'Language' },
-      { name: 'CSS', type: 'Language' },
-      { name: 'JavaScript', type: 'Language' },
-      { name: 'React', type: 'Framework' },
-    ],
+    title: 'Langages',
+    skills: ['HTML5', 'CSS3', 'JavaScript'],
   },
   {
-    title: 'Back-end Web',
-    skills: [
-      { name: 'PHP', type: 'Language' },
-      { name: 'Laravel', type: 'MVC Framework' },
-    ],
+    title: 'Frameworks & Tools',
+    skills: ['Node.js', 'Express', 'NPM'],
   },
   {
-    title: 'Mobile App',
-    skills: [
-      { name: 'Flutter', type: 'Framework' },
-    ],
+    title: 'Design & UX/UI',
+    skills: ['Figma', 'Canva'],
   },
   {
-    title: 'Tools & Technologies',
-    skills: [
-      { name: 'Vite', type: 'Build Tool' },
-      { name: 'Git', type: 'Version Control' },
-      { name: 'Jest', type: 'Testing' },
-      { name: 'GitHub', type: 'Repository' },
-      { name: 'VS Code', type: 'Editor' },
-    ],
+    title: 'Méthodologie',
+    skills: ['Responsive Design', 'Accessibilité', 'Bonnes pratiques SEO'],
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const categoryVariants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const skillVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.8 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: { duration: 0.4 },
-  },
-};
-
 const Skills = () => {
   return (
-    <section id="skills" className={styles.section}>
-      <div className={styles.container}>
-        {/* Section Header */}
-        <motion.div 
-          className={styles.header}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.h2 
-            className={styles.title}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+    <section id="skills" className="section-padding bg-background relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            Skills & <span className={styles.gradient}>Technologies</span>
-          </motion.h2>
-          <motion.p 
-            className={styles.subtitle}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Overview of my technical stack: web languages, frameworks and tools.
-          </motion.p>
-        </motion.div>
-
-        {/* Skills Grid */}
-        <motion.div 
-          className={styles.grid}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {skillCategories.map((category) => (
-            <motion.div
-              key={category.title}
-              variants={categoryVariants}
+            <motion.p 
+              className="text-primary text-sm tracking-[0.3em] uppercase mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
             >
-              <h3 className={styles.categoryTitle}>{category.title}</h3>
-              <div className={styles.skillsList}>
-                {category.skills.map((skill) => (
-                  <motion.div
-                    key={skill.name}
-                    variants={skillVariants}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      x: 10,
-                      transition: { duration: 0.2 } 
-                    }}
-                    className={styles.skillItem}
-                  >
-                    <div className={styles.skillContent}>
-                      <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.5 }}
-                        className={styles.skillIconWrapper}
-                      >
-                        <TechIcon name={skill.name} size={18} />
-                      </motion.div>
-                      <span className={styles.skillName}>{skill.name}</span>
-                    </div>
-                    <span className={styles.skillType}>{skill.type}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              Expertise
+            </motion.p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
+              Compétences
+            </h2>
+            <motion.div 
+              className="gold-line mx-auto"
+              initial={{ width: 0 }}
+              whileInView={{ width: 60 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            />
+          </motion.div>
+
+          {/* Skills Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {skillCategories.map((category, categoryIndex) => (
+              <motion.div
+                key={category.title}
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              >
+                <h3 className="font-display text-lg text-primary mb-6">
+                  {category.title}
+                </h3>
+                <ul className="space-y-3">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.li
+                      key={skill}
+                      className="text-muted-foreground text-sm py-2 border-b border-border/30"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + skillIndex * 0.1 }}
+                    >
+                      {skill}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
