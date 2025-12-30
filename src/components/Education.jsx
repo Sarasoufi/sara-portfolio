@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Education = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="section-padding bg-background-secondary relative">
       <div className="container mx-auto px-6">
@@ -21,10 +24,10 @@ const Education = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Education
+              {t.education.subtitle}
             </motion.p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Formation
+              {t.education.title}
             </h2>
             <motion.div 
               className="gold-line mx-auto"
@@ -51,17 +54,17 @@ const Education = () => {
               
               {/* Degree */}
               <h3 className="font-display text-2xl text-foreground mb-2">
-                Master 1 STIC
+                {t.education.degree}
               </h3>
               
               {/* Details */}
               <p className="text-primary text-sm tracking-[0.15em] uppercase mb-4">
-                Sciences et Technologies de l'Information et de la Communication
+                {t.education.focus}
               </p>
               
               {/* Year */}
               <p className="text-muted-foreground text-sm">
-                Année en cours — 2024/2025
+                {t.education.current} — 2024/2025
               </p>
             </div>
           </motion.div>

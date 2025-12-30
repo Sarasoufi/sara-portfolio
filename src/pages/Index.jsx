@@ -1,3 +1,4 @@
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,20 +12,22 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Methodology />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Methodology />
+          <Projects />
+          <Skills />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </LanguageProvider>
   );
 };
 

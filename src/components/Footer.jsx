@@ -1,6 +1,8 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -8,8 +10,13 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Copyright */}
-          <p className="text-muted-foreground text-sm">
-            © {currentYear} <span className="text-primary">Sara Soufi</span>. All rights reserved.
+          <p className="text-muted-foreground text-sm flex items-center gap-1">
+            © {currentYear} <span className="text-primary">Sara Soufi</span>. {t.footer.rights}
+          </p>
+
+          {/* Made with */}
+          <p className="text-muted-foreground text-sm flex items-center gap-1">
+            {t.footer.madeWith} <Heart className="w-3 h-3 text-primary fill-primary" /> 
           </p>
 
           {/* Social Links */}

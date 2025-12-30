@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Mail, Linkedin, Github, Send, Loader2 } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Loader2, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -22,21 +24,21 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert('Message envoyé avec succès !');
+        alert('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
       } else {
         throw new Error('Failed to send');
       }
     } catch (error) {
-      alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+      alert('Error sending message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const contactLinks = [
-    { icon: Mail, label: 'Email', value: 'sarasoufi047@gmail.com', href: 'mailto:sarasoufi047@gmail.com' },
-    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/sara-soufi', href: 'https://linkedin.com/in/sara-soufi' },
+    { icon: Mail, label: t.contact.email, value: 'sarasoufi047@gmail.com', href: 'mailto:sarasoufi047@gmail.com' },
+    { icon: Linkedin, label: t.contact.social, value: 'linkedin.com/in/sara-soufi', href: 'https://linkedin.com/in/sara-soufi' },
     { icon: Github, label: 'GitHub', value: 'github.com/sarasoufi', href: 'https://github.com/sarasoufi' },
   ];
 
@@ -59,10 +61,10 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Contact
+              {t.contact.subtitle}
             </motion.p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Restons en contact
+              {t.contact.title}
             </h2>
             <motion.div 
               className="gold-line mx-auto mb-8"
@@ -72,7 +74,7 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
             />
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Ouverte aux stages, projets académiques et opportunités d'apprentissage.
+              {t.contact.description}
             </p>
           </motion.div>
 
@@ -84,9 +86,6 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h3 className="font-display text-xl text-foreground mb-8">
-                Informations
-              </h3>
               <div className="space-y-6">
                 {contactLinks.map((link, index) => (
                   <motion.a
@@ -123,14 +122,11 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className="font-display text-xl text-foreground mb-8">
-                Envoyer un message
-              </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <input
                     type="text"
-                    placeholder="Votre nom"
+                    placeholder={t.contact.form.name}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
@@ -140,7 +136,7 @@ const Contact = () => {
                 <div>
                   <input
                     type="email"
-                    placeholder="Votre email"
+                    placeholder={t.contact.form.email}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -149,7 +145,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <textarea
-                    placeholder="Votre message"
+                    placeholder={t.contact.form.message}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
@@ -169,7 +165,7 @@ const Contact = () => {
                   ) : (
                     <Send className="w-4 h-4" />
                   )}
-                  {isSubmitting ? 'Envoi...' : 'Envoyer'}
+                  {t.contact.form.send}
                 </motion.button>
               </form>
             </motion.div>

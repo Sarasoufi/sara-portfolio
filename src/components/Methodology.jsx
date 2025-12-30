@@ -1,34 +1,9 @@
 import { motion } from 'framer-motion';
-
-const steps = [
-  {
-    number: '01',
-    title: 'Concept Framing',
-    description: 'Clarifying the vision by translating initial ideas into well-defined objectives. This stage establishes project boundaries, success criteria, and strategic priorities.',
-  },
-  {
-    number: '02',
-    title: 'Strategic Exploration',
-    description: 'Evaluating existing ecosystems, identifying opportunities, and assessing constraints. Decisions are guided by data, feasibility, and long-term sustainability.',
-  },
-  {
-    number: '03',
-    title: 'Experience Architecture',
-    description: 'Structuring user journeys and visual systems with precision. Interfaces are crafted to balance functionality, clarity, and aesthetic coherence using professional design tools.',
-  },
-  {
-    number: '04',
-    title: 'Technical Execution',
-    description: 'Engineering robust and maintainable solutions through clean architecture and thoughtful implementation. Focus is placed on reliability, scalability, and code quality.',
-  },
-  {
-    number: '05',
-    title: 'Validation & Deployment',
-    description: 'Ensuring readiness through testing, refinement, and controlled delivery. The solution is optimized, validated, and prepared for real-world usage.',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Methodology = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="methodology" className="section-padding bg-background relative">
       <div className="container mx-auto px-6">
@@ -48,10 +23,10 @@ const Methodology = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Process
+              {t.methodology.subtitle}
             </motion.p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Professional Workflow
+              {t.methodology.title}
             </h2>
             <motion.div 
               className="gold-line mx-auto mb-8"
@@ -61,14 +36,13 @@ const Methodology = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
             />
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A disciplined and results-driven workflow designed to transform complex ideas 
-              into reliable, high-quality digital solutions.
+              {t.methodology.description}
             </p>
           </motion.div>
 
           {/* Steps */}
           <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-1 md:gap-0">
-            {steps.map((step, index) => (
+            {t.methodology.steps.map((step, index) => (
               <motion.div
                 key={step.number}
                 className="relative"
@@ -90,8 +64,11 @@ const Methodology = () => {
                     <h3 className="font-display text-xl md:text-2xl text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-2">
                       {step.description}
+                    </p>
+                    <p className="text-muted-foreground/70 text-sm leading-relaxed">
+                      {step.details}
                     </p>
                   </div>
                 </div>

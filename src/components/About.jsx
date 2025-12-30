@@ -1,14 +1,12 @@
 import { motion } from 'framer-motion';
 import { Code, Palette, BookOpen, TrendingUp } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const highlights = [
-  { icon: Code, label: 'Web Development' },
-  { icon: Palette, label: 'UX/UI Design' },
-  { icon: BookOpen, label: 'Academic Projects' },
-  { icon: TrendingUp, label: 'Continuous Learning' },
-];
+const highlightIcons = [Code, Palette, BookOpen, TrendingUp];
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="section-padding bg-background-secondary relative">
       <div className="container mx-auto px-6">
@@ -28,10 +26,10 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              About
+              {t.about.subtitle}
             </motion.p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              À propos
+              {t.about.title}
             </h2>
             <motion.div 
               className="gold-line mx-auto"
@@ -51,9 +49,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-              Étudiante en Master 1 STIC, je développe progressivement des compétences en conception 
-              et développement d'applications web. Mon approche repose sur une méthodologie claire, 
-              une bonne compréhension des besoins utilisateurs et l'application des standards du web moderne.
+              {t.about.description}
             </p>
           </motion.div>
 
@@ -65,20 +61,23 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.label}
-                className="text-center p-6 border border-border rounded-sm hover:border-primary/30 transition-colors duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                whileHover={{ y: -5 }}
-              >
-                <item.icon className="w-6 h-6 text-primary mx-auto mb-4" />
-                <p className="text-foreground text-sm font-medium">{item.label}</p>
-              </motion.div>
-            ))}
+            {t.about.highlights.map((label, index) => {
+              const Icon = highlightIcons[index];
+              return (
+                <motion.div
+                  key={label}
+                  className="text-center p-6 border border-border rounded-sm hover:border-primary/30 transition-colors duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Icon className="w-6 h-6 text-primary mx-auto mb-4" />
+                  <p className="text-foreground text-sm font-medium">{label}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </div>
