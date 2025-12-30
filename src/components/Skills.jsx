@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import TechLogo from './TechLogo';
 
 const skillsData = {
   frontend: [
@@ -26,19 +27,22 @@ const skillsData = {
 
 const SkillCard = ({ name, type, index }) => (
   <motion.div
-    className="group bg-card border border-border/50 rounded-sm p-4 hover:border-primary/30 transition-all duration-300"
+    className="group bg-card border border-border/50 rounded-sm p-4 hover:border-primary/30 transition-all duration-300 flex items-center gap-4"
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay: index * 0.05, duration: 0.4 }}
     whileHover={{ y: -3, backgroundColor: 'hsl(var(--card) / 0.8)' }}
   >
-    <h4 className="text-foreground font-medium text-sm group-hover:text-primary transition-colors duration-300">
-      {name}
-    </h4>
-    <p className="text-muted-foreground/60 text-xs mt-1">
-      {type}
-    </p>
+    <TechLogo name={name} delay={index * 0.05} />
+    <div>
+      <h4 className="text-foreground font-medium text-sm group-hover:text-primary transition-colors duration-300">
+        {name}
+      </h4>
+      <p className="text-muted-foreground/60 text-xs mt-0.5">
+        {type}
+      </p>
+    </div>
   </motion.div>
 );
 
@@ -52,7 +56,7 @@ const SkillCategory = ({ title, skills, delay }) => (
     <h3 className="font-display text-lg text-primary mb-4 pb-2 border-b border-border/30">
       {title}
     </h3>
-    <div className="grid grid-cols-2 gap-3">
+    <div className="grid gap-3">
       {skills.map((skill, index) => (
         <SkillCard key={skill.name} {...skill} index={index} />
       ))}
