@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, ArrowRight, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import codeHtml from '@/assets/code-html.jpg';
 import codeJs from '@/assets/code-js.jpg';
@@ -14,6 +15,7 @@ const projectTechs = [
 
 const Projects = () => {
   const { t } = useLanguage();
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <section id="projects" className="section-padding bg-background-secondary relative">
@@ -120,6 +122,7 @@ const Projects = () => {
                       {t.projects.viewCode}
                     </motion.a>
                     <motion.button
+                      onClick={() => setSelectedProject(index)}
                       className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm transition-all duration-300"
                       whileHover={{ scale: 1.02, gap: '12px' }}
                       whileTap={{ scale: 0.98 }}
@@ -134,6 +137,132 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* Project Details Modal */}
+      <AnimatePresence>
+        {selectedProject !== null && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              className="relative w-full max-w-2xl bg-card border border-border rounded-sm overflow-hidden max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-10 p-2 text-muted-foreground hover:text-foreground bg-background/50 rounded-sm transition-colors duration-300"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Image */}
+              <div className="relative h-48 md:h-64">
+                <img 
+                  src={projectImages[selectedProject]} 
+                  alt={t.projects.items[selectedProject].title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                <div className="absolute bottom-4 left-6">
+                  <span className="px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-sm">
+                    {t.projects.items[selectedProject].subtitle}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 md:p-8">
+                <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4">
+                  {t.projects.items[selectedProject].title}
+                </h3>
+                
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {t.projects.items[selectedProject].description}
+                </p>
+
+                {/* Detailed Description */}
+                <div className="mb-6">
+                  <h4 className="text-primary text-sm uppercase tracking-wider mb-3">
+                    {t.projects.detailedDescription}
+                  </h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {t.projects.items[selectedProject].details}
+                  </p>
+                </div>
+
+                {/* Objectives */}
+                <div className="mb-6">
+                  <h4 className="text-primary text-sm uppercase tracking-wider mb-3">
+                    {t.projects.objectives}
+                  </h4>
+                  <ul className="space-y-2">
+                    {t.projects.items[selectedProject].objectivesList?.map((objective, idx) => (
+                      <li key={idx} className="text-muted-foreground text-sm flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        {objective}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Key Learnings */}
+                <div className="mb-6">
+                  <h4 className="text-primary text-sm uppercase tracking-wider mb-3">
+                    {t.projects.keyLearnings}
+                  </h4>
+                  <ul className="space-y-2">
+                    {t.projects.items[selectedProject].learningsList?.map((learning, idx) => (
+                      <li key={idx} className="text-muted-foreground text-sm flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        {learning}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Technologies */}
+                <div className="mb-6">
+                  <h4 className="text-primary text-sm uppercase tracking-wider mb-3">
+                    {t.projects.technologies}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {projectTechs[selectedProject].map((tech) => (
+                      <span 
+                        key={tech}
+                        className="text-sm text-foreground border border-primary/30 bg-primary/5 px-3 py-1.5 rounded-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action */}
+                <motion.a
+                  href="https://github.com/sarasoufi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Github className="w-4 h-4" />
+                  {t.projects.viewCode}
+                </motion.a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
