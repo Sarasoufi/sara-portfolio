@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Linkedin, Github, Send, Loader2, MapPin } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -11,26 +11,39 @@ const Contact = () => {
     email: '',
     message: '',
   });
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setStatusMessage('');
+
     try {
-      const response = await fetch('https://formspree.io/f/xzzpvpvq', {
+      const response = await fetch('https://formspree.io/f/xlgrzvvj', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        alert('Message sent successfully!');
+        setStatusMessage('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
+      } else if (data?.errors) {
+        setStatusMessage(data.errors.map(err => err.message).join(', '));
       } else {
-        throw new Error('Failed to send');
+        setStatusMessage('Failed to send the message.');
       }
     } catch (error) {
-      alert('Error sending message. Please try again.');
+      setStatusMessage('Error sending message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -47,14 +60,14 @@ const Contact = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.p 
+            <motion.p
               className="text-primary text-sm tracking-[0.3em] uppercase mb-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -66,7 +79,7 @@ const Contact = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
               {t.contact.title}
             </h2>
-            <motion.div 
+            <motion.div
               className="gold-line mx-auto mb-8"
               initial={{ width: 0 }}
               whileInView={{ width: 60 }}
@@ -123,36 +136,31 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    placeholder={t.contact.form.name}
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder={t.contact.form.email}
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    placeholder={t.contact.form.message}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={4}
-                    className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder={t.contact.form.name}
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300"
+                />
+                <input
+                  type="email"
+                  placeholder={t.contact.form.email}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300"
+                />
+                <textarea
+                  placeholder={t.contact.form.message}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  rows={4}
+                  className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
+                />
+                {statusMessage && <p className="text-sm text-primary">{statusMessage}</p>}
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
@@ -160,11 +168,7 @@ const Contact = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {isSubmitting ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
+                  {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                   {t.contact.form.send}
                 </motion.button>
               </form>

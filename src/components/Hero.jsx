@@ -126,31 +126,35 @@ const Hero = () => {
             </motion.div>
 
             {/* Social Links */}
-            <motion.div 
-              className="flex justify-center lg:justify-start gap-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-            >
-              {[
-                { icon: Github, href: "https://github.com/sarasoufi", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/sara-soufi", label: "LinkedIn" },
-                { icon: Mail, href: "mailto:sarasoufi047@gmail.com", label: "Email" },
-              ].map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 text-muted-foreground hover:text-primary border border-transparent hover:border-primary/30 rounded-sm transition-all duration-300"
-                  whileHover={{ scale: 1.15, y: -3 }}
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </motion.div>
-          </motion.div>
+           <motion.div 
+  className="flex justify-center lg:justify-start gap-6"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.6, delay: 0.9 }}
+>
+  {[
+    { icon: Github, href: "https://github.com/sarasoufi", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/sara-soufi", label: "LinkedIn" },
+    {
+      icon: Mail,
+      href: "https://mail.google.com/mail/?view=cm&to=sarasoufi047@gmail.com&su=Contact%20from%20Portfolio&body=Hello%20Sara,%0D%0A%0D%0A",
+      label: "Email"
+    }
+  ].map((social) => (
+    <motion.a
+      key={social.label}
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="p-3 text-muted-foreground hover:text-primary border border-transparent hover:border-primary/30 rounded-sm transition-all duration-300"
+      whileHover={{ scale: 1.15, y: -3 }}
+      aria-label={social.label}
+    >
+      <social.icon className="w-5 h-5" />
+    </motion.a>
+  ))}
+</motion.div>
+</motion.div>
 
           {/* Right - Large Image */}
           <motion.div 

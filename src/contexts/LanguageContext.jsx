@@ -20,6 +20,7 @@ const translations = {
         { 
           title: 'Kanban Board', 
           subtitle: 'Lab 7', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab7-setup/Lab7/kanban-board',
           description: 'A Trello-like task management application built with React. Features task creation, status-based columns, dynamic task movement, and modern component architecture.', 
           details: 'This lab focused on building a complete task management application using React. We implemented drag-and-drop functionality, state management for tasks across different columns (To Do, In Progress, Done), and learned component composition patterns.',
           objectivesList: ['Build a functional Kanban board interface', 'Implement task CRUD operations', 'Manage state across multiple columns', 'Apply CSS Modules for styling'],
@@ -28,6 +29,7 @@ const translations = {
         { 
           title: 'React Components & State', 
           subtitle: 'Lab 5', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab5-react/lab5-react',
           description: 'A React lab demonstrating core concepts including functional components, hooks, events, lists, props, and forms to build interactive and dynamic user interfaces.', 
           details: 'This lab introduced React fundamentals - creating functional components, using useState and useEffect hooks, handling user events, and building forms with controlled inputs.',
           objectivesList: ['Create functional React components', 'Use useState and useEffect hooks', 'Handle user events and forms', 'Render dynamic lists with keys'],
@@ -36,6 +38,7 @@ const translations = {
         { 
           title: 'Unit Testing (Jest)', 
           subtitle: 'Lab 4', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab4-setup/Lab4_Jest',
           description: 'A JavaScript project demonstrating unit testing using Jest. Includes tests for array manipulation functions, string concatenation, and array chunking.', 
           details: 'This lab taught us how to write and run unit tests using Jest. We learned about test organization with describe blocks, assertions with expect, and testing different types of functions.',
           objectivesList: ['Write unit tests with Jest', 'Organize tests with describe blocks', 'Use expect assertions', 'Test array and string functions'],
@@ -43,7 +46,8 @@ const translations = {
         },
         { 
           title: 'Node.js & NPM', 
-          subtitle: 'Lab 3', 
+          subtitle: 'Lab 3',
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab3', 
           description: 'A Node.js project focused on server-side JavaScript and package management. Includes reusable modules, file operations, and third-party package integration.', 
           details: 'This lab introduced server-side JavaScript with Node.js. We learned to create HTTP servers, work with the file system, manage packages with NPM, and build simple APIs.',
           objectivesList: ['Set up Node.js development environment', 'Create and export modules', 'Use built-in Node.js modules (fs, http)', 'Manage dependencies with NPM'],
@@ -52,6 +56,7 @@ const translations = {
         { 
           title: 'Git & GitHub', 
           subtitle: 'Lab 2', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab2-setup/Lab2',
           description: 'Version control project covering Git and GitHub for managing code changes. Includes repositories, commits, branching, and remote collaboration workflows.', 
           details: 'This lab covered essential version control skills using Git and GitHub. We learned the Git workflow, branching strategies, and how to collaborate on code using pull requests.',
           objectivesList: ['Initialize and manage Git repositories', 'Create meaningful commits', 'Work with branches', 'Push code to GitHub'],
@@ -60,7 +65,55 @@ const translations = {
       ] 
     },
     skills: { subtitle: 'Expertise', title: 'Skills & Technologies', overview: 'Overview of my technical stack: web languages, frameworks and tools.', categories: { frontend: 'Front-end Web', backend: 'Back-end Web', mobile: 'Mobile App', tools: 'Tools & Technologies' } },
-    blog: { subtitle: 'Insights', title: 'Blog & Articles', description: 'Short articles about my learning journey, challenges faced in projects, and solutions found.', readMore: 'Read More', articles: [{ title: 'My First Steps with React', date: 'Dec 2024', readTime: '5 min read', category: 'Learning', excerpt: 'Discovering React was a turning point in my web development journey. Here I share the challenges I faced and how I overcame them.' }, { title: 'Debugging Tips for Beginners', date: 'Nov 2024', readTime: '4 min read', category: 'Tips', excerpt: 'Debugging can be frustrating. Here are some techniques I learned that made my debugging process much more efficient.' }, { title: 'Understanding Responsive Design', date: 'Oct 2024', readTime: '6 min read', category: 'Tutorial', excerpt: 'Responsive design is essential in modern web development. Learn the key concepts and best practices I discovered.' }] },
+   blog: {
+  subtitle: 'Insights',
+  title: 'Blog & Articles',
+  description: 'Short articles about my learning journey, challenges faced in projects, and solutions found.',
+  readMore: 'Read More',
+  readLess: 'Read Less',
+  articles: [
+    {
+      title: 'My First Steps with React',
+      date: 'Dec 2024',
+      readTime: '5 min read',
+      category: 'Learning',
+      excerpt:
+        'Discovering React was a turning point in my web development journey. Here I share the challenges I faced and how I overcame them.',
+      fullContent: `When I started learning React, everything felt new and challenging. Concepts such as components, JSX, and state management required time and practice to fully understand.
+
+One of the biggest difficulties was understanding how data flows between components and how to structure an application properly.
+
+Through hands-on practice and small projects, I gradually improved my understanding. React taught me to think in reusable components and write cleaner, more maintainable code. This experience marked an important milestone in my front-end development journey.`
+    },
+    {
+      title: 'Debugging Tips for Beginners',
+      date: 'Nov 2024',
+      readTime: '4 min read',
+      category: 'Tips',
+      excerpt:
+        'Debugging can be frustrating. Here are some techniques I learned that made my debugging process much more efficient.',
+      fullContent: `At the beginning, debugging felt overwhelming and stressful. Error messages seemed confusing and difficult to interpret.
+
+By learning how to read error messages carefully, using console logs effectively, and relying on browser developer tools, I became more confident in finding issues.
+
+Over time, debugging turned into a logical problem-solving process that helped me better understand my code and improve my development skills.`
+    },
+    {
+      title: 'Understanding Responsive Design',
+      date: 'Oct 2024',
+      readTime: '6 min read',
+      category: 'Tutorial',
+      excerpt:
+        'Responsive design is essential in modern web development. Learn the key concepts and best practices I discovered.',
+      fullContent: `Responsive design plays a crucial role in delivering a good user experience across different devices.
+
+By using media queries, flexible layouts with Flexbox and Grid, and relative units, I learned how to create interfaces that adapt smoothly to all screen sizes.
+
+Understanding responsive design also strengthened my UX/UI mindset and improved the overall quality of my web projects.`
+    }
+  ]
+}
+,
     personal: { subtitle: 'Beyond Code', title: 'Personal Side', description: 'Discover who I am outside of coding - my hobbies, interests, and creative experiments.', hobbiesTitle: 'Hobbies & Interests', galleryTitle: 'Creative Experiments', funFact: 'Fun Fact', funFactText: 'I love experimenting with AI-generated art and exploring how technology can enhance creativity!', hobbies: [{ name: 'Reading', emoji: '📚', description: 'Tech books & novels' }, { name: 'Photography', emoji: '📷', description: 'Capturing moments' }, { name: 'Music', emoji: '🎵', description: 'Lo-fi & ambient' }, { name: 'Travel', emoji: '✈️', description: 'Exploring new places' }], gallery: [{ title: 'AI Art Exploration', emoji: '🎨', description: 'Experimenting with AI image generation tools' }, { title: 'UI Concepts', emoji: '💡', description: 'Creative interface design experiments' }, { title: 'Side Projects', emoji: '🚀', description: 'Personal coding experiments' }] },
     education: { subtitle: 'Academic Path', title: 'Education', current: 'Current Year', degree: 'Master 1 STIC', university: 'University', focus: 'Focus: Web Application Design & Development' },
     contact: { subtitle: 'Get In Touch', title: 'Contact', description: 'Open to internships, academic projects, and learning opportunities.', email: 'Email', location: 'Location', social: 'Social', form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send Message' } },
@@ -85,6 +138,7 @@ const translations = {
         { 
           title: 'Tableau Kanban', 
           subtitle: 'Lab 7', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab7-setup/Lab7/kanban-board',
           description: "Une application de gestion de tâches type Trello construite avec React. Fonctionnalités: création de tâches, colonnes par statut, déplacement dynamique.", 
           details: "Ce lab s'est concentré sur la construction d'une application complète de gestion de tâches avec React. Nous avons implémenté le glisser-déposer, la gestion d'état pour les tâches à travers différentes colonnes.",
           objectivesList: ['Construire une interface Kanban fonctionnelle', 'Implémenter les opérations CRUD sur les tâches', 'Gérer l\'état à travers plusieurs colonnes', 'Appliquer CSS Modules pour le style'],
@@ -93,6 +147,7 @@ const translations = {
         { 
           title: 'Composants React & État', 
           subtitle: 'Lab 5', 
+           githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab5-react/lab5-react',
           description: "Un lab React démontrant les concepts fondamentaux: composants fonctionnels, hooks, événements, listes, props et formulaires.", 
           details: "Ce lab a introduit les fondamentaux React - création de composants fonctionnels, utilisation des hooks useState et useEffect, gestion des événements et construction de formulaires.",
           objectivesList: ['Créer des composants fonctionnels React', 'Utiliser les hooks useState et useEffect', 'Gérer les événements et formulaires', 'Rendre des listes dynamiques avec keys'],
@@ -101,6 +156,7 @@ const translations = {
         { 
           title: 'Tests Unitaires (Jest)', 
           subtitle: 'Lab 4', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab4-setup/Lab4_Jest',
           description: "Un projet JavaScript démontrant les tests unitaires avec Jest. Inclut des tests pour les tableaux, concaténation de chaînes et découpage de tableaux.", 
           details: "Ce lab nous a appris à écrire et exécuter des tests unitaires avec Jest. Organisation des tests avec describe, assertions avec expect, et test de différents types de fonctions.",
           objectivesList: ['Écrire des tests unitaires avec Jest', 'Organiser les tests avec describe', 'Utiliser les assertions expect', 'Tester des fonctions de tableaux et chaînes'],
@@ -109,6 +165,7 @@ const translations = {
         { 
           title: 'Node.js & NPM', 
           subtitle: 'Lab 3', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab3', 
           description: "Un projet Node.js focalisé sur JavaScript côté serveur et gestion de packages. Modules réutilisables, opérations fichiers et intégration de packages tiers.", 
           details: "Ce lab a introduit JavaScript côté serveur avec Node.js. Création de serveurs HTTP, travail avec le système de fichiers, gestion des packages avec NPM.",
           objectivesList: ['Configurer l\'environnement Node.js', 'Créer et exporter des modules', 'Utiliser les modules Node.js intégrés (fs, http)', 'Gérer les dépendances avec NPM'],
@@ -117,6 +174,7 @@ const translations = {
         { 
           title: 'Git & GitHub', 
           subtitle: 'Lab 2', 
+          githubUrl: 'https://github.com/Sarasoufi/caw-labs/tree/lab2-setup/Lab2',
           description: "Projet de contrôle de version couvrant Git et GitHub. Inclut dépôts, commits, branches et workflows de collaboration distante.", 
           details: "Ce lab a couvert les compétences essentielles en contrôle de version avec Git et GitHub. Workflow Git, stratégies de branches et collaboration via pull requests.",
           objectivesList: ['Initialiser et gérer des dépôts Git', 'Créer des commits significatifs', 'Travailler avec les branches', 'Pousser le code sur GitHub'],
@@ -125,7 +183,56 @@ const translations = {
       ] 
     },
     skills: { subtitle: 'Expertise', title: 'Compétences & Technologies', overview: 'Aperçu de ma stack technique : langages web, frameworks et outils.', categories: { frontend: 'Front-end Web', backend: 'Back-end Web', mobile: 'Application Mobile', tools: 'Outils & Technologies' } },
-    blog: { subtitle: 'Insights', title: 'Blog & Articles', description: "Articles courts sur mon parcours d'apprentissage, les défis rencontrés et les solutions trouvées.", readMore: 'Lire plus', articles: [{ title: 'Mes premiers pas avec React', date: 'Déc 2024', readTime: '5 min', category: 'Apprentissage', excerpt: "Découvrir React a été un tournant dans mon parcours. Je partage ici les défis rencontrés et comment je les ai surmontés." }, { title: 'Conseils de débogage pour débutants', date: 'Nov 2024', readTime: '4 min', category: 'Conseils', excerpt: "Le débogage peut être frustrant. Voici des techniques qui ont rendu mon processus plus efficace." }, { title: 'Comprendre le design responsive', date: 'Oct 2024', readTime: '6 min', category: 'Tutoriel', excerpt: "Le design responsive est essentiel. Découvrez les concepts clés et bonnes pratiques." }] },
+    blog: {
+  subtitle: 'Insights',
+  title: 'Blog & Articles',
+  description:
+    "Articles courts sur mon parcours d'apprentissage, les défis rencontrés et les solutions trouvées.",
+  readMore: 'Lire plus',
+  readLess: 'Lire moins',
+  articles: [
+    {
+      title: 'Mes premiers pas avec React',
+      date: 'Déc 2024',
+      readTime: '5 min',
+      category: 'Apprentissage',
+      excerpt:
+        "Découvrir React a été un tournant dans mon parcours. Je partage ici les défis rencontrés et comment je les ai surmontés.",
+      fullContent: `Lorsque j’ai commencé à apprendre React, tout était nouveau et parfois complexe. Les notions de composants, de JSX et de gestion d’état demandaient du temps et de la pratique.
+
+L’un des principaux défis était de comprendre le flux de données entre les composants et la bonne structuration d’une application.
+
+Grâce à des projets pratiques et à une pratique régulière, j’ai progressivement amélioré ma compréhension. React m’a appris à écrire un code plus propre, structuré et réutilisable, marquant une étape clé dans mon apprentissage du développement front-end.`
+    },
+    {
+      title: 'Conseils de débogage pour débutants',
+      date: 'Nov 2024',
+      readTime: '4 min',
+      category: 'Conseils',
+      excerpt:
+        'Le débogage peut être frustrant. Voici des techniques qui ont rendu mon processus plus efficace.',
+      fullContent: `Au début, le débogage me semblait très difficile et stressant. Les messages d’erreur paraissaient incompréhensibles.
+
+En apprenant à lire attentivement les erreurs, à utiliser efficacement console.log et les outils de développement du navigateur, j’ai gagné en confiance.
+
+Le débogage est devenu un processus logique qui m’aide à mieux comprendre mon code et à progresser en tant que développeuse.`
+    },
+    {
+      title: 'Comprendre le design responsive',
+      date: 'Oct 2024',
+      readTime: '6 min',
+      category: 'Tutoriel',
+      excerpt:
+        'Le design responsive est essentiel. Découvrez les concepts clés et bonnes pratiques.',
+      fullContent: `Le design responsive est indispensable dans le développement web moderne, en raison de la diversité des écrans et appareils.
+
+En utilisant les media queries, Flexbox et Grid, j’ai appris à créer des interfaces adaptables à toutes les tailles d’écran.
+
+Cette approche m’a permis de concevoir des sites plus accessibles, modernes et centrés sur l’utilisateur, tout en renforçant ma vision UX/UI.`
+    }
+  ]
+}
+,
     personal: { subtitle: 'Au-delà du code', title: 'Côté Personnel', description: 'Découvrez qui je suis en dehors du code - mes hobbies, intérêts et expériences créatives.', hobbiesTitle: 'Hobbies & Intérêts', galleryTitle: 'Expériences Créatives', funFact: 'Fait amusant', funFactText: "J'adore expérimenter avec l'art généré par IA et explorer comment la technologie peut enrichir la créativité!", hobbies: [{ name: 'Lecture', emoji: '📚', description: 'Livres tech & romans' }, { name: 'Photographie', emoji: '📷', description: 'Capturer des moments' }, { name: 'Musique', emoji: '🎵', description: 'Lo-fi & ambient' }, { name: 'Voyage', emoji: '✈️', description: 'Explorer de nouveaux lieux' }], gallery: [{ title: 'Exploration Art IA', emoji: '🎨', description: "Expérimentation avec les outils de génération d'images IA" }, { title: 'Concepts UI', emoji: '💡', description: "Expériences de design d'interface créatif" }, { title: 'Projets Perso', emoji: '🚀', description: 'Expériences de code personnelles' }] },
     education: { subtitle: 'Parcours Académique', title: 'Formation', current: 'Année en cours', degree: 'Master 1 STIC', university: 'Université', focus: "Spécialisation : Conception et Développement d'Applications Web" },
     contact: { subtitle: 'Me contacter', title: 'Contact', description: "Ouverte aux stages, projets académiques et opportunités d'apprentissage.", email: 'Email', location: 'Localisation', social: 'Réseaux', form: { name: 'Nom', email: 'Email', message: 'Message', send: 'Envoyer' } },
