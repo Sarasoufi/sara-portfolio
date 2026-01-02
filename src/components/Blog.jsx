@@ -1,9 +1,15 @@
-import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Clock, ChevronDown, ChevronUp, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Blog = () => {
   const { t } = useLanguage();
+  const [expandedArticle, setExpandedArticle] = useState(null);
+
+  const toggleArticle = (index) => {
+    setExpandedArticle(expandedArticle === index ? null : index);
+  };
 
   return (
     <section id="blog" className="section-padding bg-background relative overflow-hidden">
@@ -33,7 +39,7 @@ const Blog = () => {
               {t.blog.title}
             </h2>
             <motion.div 
-              className="gold-line mx-auto mb-6"
+              className="h-0.5 bg-primary mx-auto mb-6"
               initial={{ width: 0 }}
               whileInView={{ width: 60 }}
               viewport={{ once: true }}
@@ -49,7 +55,7 @@ const Blog = () => {
             {t.blog.articles.map((article, index) => (
               <motion.article
                 key={article.title}
-                className="group bg-card border border-border rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300"
+                className="group bg-card border border-border rounded-lg overflow-hidden hover:border-primary/30 transition-all duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -80,17 +86,44 @@ const Blog = () => {
 
                 {/* Article Content */}
                 <div className="p-6">
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6">
-                    {article.excerpt}
-                  </p>
+                  <AnimatePresence mode="wait">
+                    {expandedArticle === index ? (
+                      <motion.div
+                        key="expanded"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line mb-6">
+                          {article.fullContent}
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.p
+                        key="collapsed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6"
+                      >
+                        {article.excerpt}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
                   
                   <motion.button
+                    onClick={() => toggleArticle(index)}
                     className="flex items-center gap-2 text-primary text-sm font-medium group/btn"
                     whileHover={{ x: 5 }}
                   >
                     <BookOpen className="w-4 h-4" />
-                    {t.blog.readMore}
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    {expandedArticle === index ? t.blog.readLess : t.blog.readMore}
+                    {expandedArticle === index ? (
+                      <ChevronUp className="w-4 h-4 transition-transform" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 transition-transform" />
+                    )}
                   </motion.button>
                 </div>
               </motion.article>
