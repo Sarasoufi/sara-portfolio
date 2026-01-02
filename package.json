@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "postinstall": "npm rebuild @swc/core || true",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
